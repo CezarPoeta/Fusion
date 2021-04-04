@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -87,7 +87,10 @@ DATABASES = {
 
     }
 }
-
+"""
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -131,13 +134,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # email teste console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
+"""
 # email produção
-# EMAIL_HOST ='localhost'
-# EMAIL_HOST_USER = 'no-replay@fusion.com.br'
-# EMAIL_PORT = 587
-# EMAIL_USE_TSL = True
-# EMAIL_HOST_PASSWORD = 'fusion' 
-# DEFAULT_FROM_EMAIL = 'contato@fusion.com.br'
+EMAIL_HOST ='localhost'
+EMAIL_HOST_USER = 'no-replay@fusion.com.br'
+EMAIL_PORT = 587
+EMAIL_USE_TSL = True
+EMAIL_HOST_PASSWORD = 'fusion' 
+DEFAULT_FROM_EMAIL = 'contato@fusion.com.br'
+"""
+LOGOUT_REDIRECT_URL = 'index'
